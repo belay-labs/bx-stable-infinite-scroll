@@ -1,5 +1,5 @@
 {
-  "name": "simple-screenshot-feedback",
+  "name": "npm-publish-boilerplate",
   "version": "1.0.7",
   "description": "Plug and play screenshot feedback tool that sends to Slack.",
   "main": "lib/index.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cathykc/simple-screenshot-feedback.git"
+    "url": "git+https://github.com/cathykc/npm-publish-boilerplate.git"
   },
   "keywords": [
     "screenshot",
@@ -29,9 +29,9 @@
   "author": "cathykc",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cathykc/simple-screenshot-feedback/issues"
+    "url": "https://github.com/cathykc/npm-publish-boilerplate/issues"
   },
-  "homepage": "https://github.com/cathykc/simple-screenshot-feedback#readme",
+  "homepage": "https://github.com/cathykc/npm-publish-boilerplate#readme",
   "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
