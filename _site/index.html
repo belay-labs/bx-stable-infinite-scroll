@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>bx-stable-infinite-scroll | npm-publish-boilerplate</title>
+<title>bx-stable-infinite-scroll</title>
 <meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="bx-stable-infinite-scroll" />
 <meta property="og:locale" content="en_US" />
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
-<meta property="og:site_name" content="npm-publish-boilerplate" />
+<meta property="og:site_name" content="bx-stable-infinite-scroll" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="bx-stable-infinite-scroll" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/","name":"npm-publish-boilerplate","@type":"WebSite","headline":"bx-stable-infinite-scroll","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/","name":"bx-stable-infinite-scroll","@type":"WebSite","headline":"bx-stable-infinite-scroll","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=7c4260d6a122e7da7e23d5975e114573fe1cc2ae">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a8c247ca84c17e7a1c4eb8886eb1832398c31d81">
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
@@ -34,7 +34,7 @@
         <p></p>
 
         
-        <p class="view"><a href="https://github.com/cathykc/npm-publish-boilerplate" target="_blank">View the Project on GitHub <small>cathykc/npm-publish-boilerplate</small></a></p>
+        <p class="view"><a href="https://github.com/cathykc/bx-stable-infinite-scroll" target="_blank">View the Project on GitHub <small>cathykc/bx-stable-infinite-scroll</small></a></p>
         
 
         
@@ -50,66 +50,95 @@
 
 <p><a href="https://cathykc.github.io/bx-stable-infinite-scroll/">Demo</a></p>
 
-<p>Stable bi-directional infinite scroll component. Load additional data from both ends of a container while maintaining current view. Used for chat, timeline, feed views.</p>
+<p>Stable bi-directional infinite scroll React component. Load additional data from both ends of a container while maintaining current view. Used for chat, timeline, feed views.</p>
 
 <h2 id="documentation">Documentation</h2>
 <h3 id="installation">Installation</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yarn
-yarn add react-window-infinite-loader
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save react-window-infinite-loader
 
-# npm
-npm install --save react-window-infinite-loader
+# or
+
+yarn add react-window-infinite-loader
 </code></pre></div></div>
 
 <h3 id="usage">Usage</h3>
-<p>| Prop | Type | Description |
-| — | — | — |
-| <code class="language-plaintext highlighter-rouge">height</code> | <code class="language-plaintext highlighter-rouge">string</code> | Height of infinite scrolling container (e.g. “300px”, “100vh”). |
-| <code class="language-plaintext highlighter-rouge">loadingComponent</code> | <code class="language-plaintext highlighter-rouge">ReactNode</code> | What to display when fetching more data (e.g. <code class="language-plaintext highlighter-rouge">&lt;div&gt;Loading...&lt;/div&gt;</code>). |
-| <code class="language-plaintext highlighter-rouge">nextDataFn</code> | <code class="language-plaintext highlighter-rouge">() =&gt; void</code> | Function to fetch next rows. |
-| <code class="language-plaintext highlighter-rouge">nextEnd</code> | <code class="language-plaintext highlighter-rouge">boolean</code> | No more next rows to fetch. |
-| <code class="language-plaintext highlighter-rouge">nextLoading</code> | <code class="language-plaintext highlighter-rouge">boolean</code> | Fetching next rows. |
-| <code class="language-plaintext highlighter-rouge">previousDataFn</code> | <code class="language-plaintext highlighter-rouge">() =&gt; void</code> | Function to fetch previous rows. |
-| <code class="language-plaintext highlighter-rouge">previousEnd</code> | <code class="language-plaintext highlighter-rouge">boolean</code> | No more previous rows to fetch. |
-| <code class="language-plaintext highlighter-rouge">previousLoading</code> | <code class="language-plaintext highlighter-rouge">boolean</code> | Fetching previous rows. |
-| <code class="language-plaintext highlighter-rouge">initialReverse</code> | <code class="language-plaintext highlighter-rouge">?boolean</code> | Default <code class="language-plaintext highlighter-rouge">true</code> (loading data from top). Indicate whether data will initially be loaded from top or bottom of container. |</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import BxInfiniteScroll from "bx-stable-infinite-scroll";
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">height</code></td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>Height of infinite scrolling container (e.g. “300px”, “100vh”).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">loadingComponent</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ReactNode</code></td>
+      <td>What to display when fetching more data (e.g. <code class="language-plaintext highlighter-rouge">&lt;div&gt;Loading...&lt;/div&gt;</code>).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">nextDataFn</code></td>
+      <td><code class="language-plaintext highlighter-rouge">() =&gt; void</code></td>
+      <td>Function to fetch next rows.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">nextEnd</code></td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>No more next rows to fetch.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">nextLoading</code></td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>Fetching next rows.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">previousDataFn</code></td>
+      <td><code class="language-plaintext highlighter-rouge">() =&gt; void</code></td>
+      <td>Function to fetch previous rows.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">previousEnd</code></td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>No more previous rows to fetch.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">previousLoading</code></td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>Fetching previous rows.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">initialReverse</code></td>
+      <td><code class="language-plaintext highlighter-rouge">?boolean</code></td>
+      <td>Default <code class="language-plaintext highlighter-rouge">true</code> (loading data from top). Indicate whether data will initially be loaded from top or bottom of container.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">children</code></td>
+      <td>ReactNode</td>
+      <td>Rows to render</td>
+    </tr>
+  </tbody>
+</table>
 
-export default function SomeComponent() {
-  return (
-    &lt;&gt;
-      ...
-      &lt;BxInfiniteScroll
-          height="300px"
-          loadingComponent={&lt;div style=&gt;Loading 5 more items...&lt;/div&gt;}
+<h4 id="example">Example</h4>
+<p>See <a href="https://github.com/cathykc/bx-stable-infinite-scroll/blob/master/examples/src/App.tsx">demo code</a> for detailed usage example.</p>
 
-          nextDataFn={handleNextDataLoad}
-          nextEnd={false}
-          nextLoading={loadingNext}
+<p><strong>🚨 Use unique keys for children</strong>
+Make sure the elements you’re passing into <code class="language-plaintext highlighter-rouge">&lt;BxInfiniteScroll&gt;</code> have unique and consistent keys.</p>
 
-          previousDataFn={handlePreviousDataLoad}
-          previousEnd={false}
-          previousLoading={loadingPrevious}
-        &gt;
-          {map(items, (item) =&gt; {
-            return (
-              &lt;div
-                key={item.text}
-                style=
-              &gt;
-                &lt;div 
-                  style=
-                /&gt;
-                {item.text}
-              &lt;/div&gt;
-            )
-          })}
-        &lt;/BxInfiniteScroll&gt;
-    &lt;/&gt;
-  )
-}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;BxInfiniteScroll {...props}&gt;
+  {map(rows, (row) =&gt; {
+    return &lt;div key={row.key}&gt;{row.content}&lt;/div&gt;
+  })}
+&lt;/BxInfiniteScroll&gt;
 </code></pre></div></div>
+
+<p><img src="recording.gif" alt="" /></p>
 
 
       </section>

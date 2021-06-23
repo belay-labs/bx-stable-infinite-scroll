@@ -2,19 +2,20 @@
 
 [Demo](https://cathykc.github.io/bx-stable-infinite-scroll/)
 
-Stable bi-directional infinite scroll component. Load additional data from both ends of a container while maintaining current view. Used for chat, timeline, feed views.
+Stable bi-directional infinite scroll React component. Load additional data from both ends of a container while maintaining current view. Used for chat, timeline, feed views.
 
 ## Documentation
 ### Installation
 ```
-# yarn
-yarn add react-window-infinite-loader
-
-# npm
 npm install --save react-window-infinite-loader
+
+# or
+
+yarn add react-window-infinite-loader
 ```
 
 ### Usage
+
 | Prop | Type | Description |
 | --- | --- | --- |
 | `height` | `string` | Height of infinite scrolling container (e.g. "300px", "100vh"). |
@@ -26,53 +27,20 @@ npm install --save react-window-infinite-loader
 | `previousEnd` | `boolean` | No more previous rows to fetch. |
 | `previousLoading` | `boolean` | Fetching previous rows. |
 | `initialReverse` | `?boolean` | Default `true` (loading data from top). Indicate whether data will initially be loaded from top or bottom of container. | 
+| `children` | ReactNode | Rows to render |
 
+#### Example
+See [demo code](https://github.com/cathykc/bx-stable-infinite-scroll/blob/master/examples/src/App.tsx) for detailed usage example.
+
+**🚨 Use unique keys for children**
+Make sure the elements you're passing into `<BxInfiniteScroll>` have unique and consistent keys.
 
 ```
-import BxInfiniteScroll from "bx-stable-infinite-scroll";
-
-export default function SomeComponent() {
-  return (
-    <>
-      ...
-      <BxInfiniteScroll
-          height="300px"
-          loadingComponent={<div style={{ padding: "8px 16px" }}>Loading 5 more items...</div>}
-
-          nextDataFn={handleNextDataLoad}
-          nextEnd={false}
-          nextLoading={loadingNext}
-
-          previousDataFn={handlePreviousDataLoad}
-          previousEnd={false}
-          previousLoading={loadingPrevious}
-        >
-          {map(items, (item) => {
-            return (
-              <div
-                key={item.text}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  padding: "8px 16px",
-                  borderBottom: "1px solid #DDD"
-                }}
-              >
-                <div 
-                  style={{
-                    backgroundColor: item.color,
-                    height: "16px",
-                    width: "16px",
-                    borderRadius: "4px",
-                    marginRight: "4px",
-                  }}
-                />
-                {item.text}
-              </div>
-            )
-          })}
-        </BxInfiniteScroll>
-    </>
-  )
-}
+<BxInfiniteScroll {...props}>
+  {map(rows, (row) => {
+    return <div key={row.key}>{row.content}</div>
+  })}
+</BxInfiniteScroll>
 ```
+
+![](recording.gif)
