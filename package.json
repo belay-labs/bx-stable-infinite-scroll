@@ -1,7 +1,7 @@
 {
-  "name": "npm-publish-boilerplate",
-  "version": "1.0.7",
-  "description": "Plug and play screenshot feedback tool that sends to Slack.",
+  "name": "bx-stable-infinite-scroll",
+  "version": "1.0.0",
+  "description": "Stable bidirectional infinite scroll React component",
   "main": "lib/index.js",
   "scripts": {
     "prepare": "install-peers",
@@ -18,13 +18,7 @@
     "url": "git+https://github.com/cathykc/npm-publish-boilerplate.git"
   },
   "keywords": [
-    "screenshot",
-    "feedback",
-    "react",
-    "modal",
-    "popup",
-    "slack",
-    "html2canvas"
+    "react"
   ],
   "author": "cathykc",
   "license": "ISC",
@@ -63,6 +57,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "html2canvas": "^1.0.0-rc.5"
+    "lodash": "^4.17.21",
+    "randomcolor": "^0.6.2"
   }
 }
