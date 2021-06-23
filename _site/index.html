@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>bx-stable-infinite-scroll | npm-publish-boilerplate</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="bx-stable-infinite-scroll" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="npm-publish-boilerplate" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="bx-stable-infinite-scroll" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/","name":"npm-publish-boilerplate","@type":"WebSite","headline":"bx-stable-infinite-scroll","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=7c4260d6a122e7da7e23d5975e114573fe1cc2ae">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Demo</h1>
+        
+        
+
+        <p></p>
+
+        
+        <p class="view"><a href="https://github.com/cathykc/npm-publish-boilerplate" target="_blank">View the Project on GitHub <small>cathykc/npm-publish-boilerplate</small></a></p>
+        
+
+        
+
+        <div id="demo"></div>
+
+        
+
+      </header>
+      <section>
+
+      <h1 id="bx-stable-infinite-scroll">bx-stable-infinite-scroll</h1>
+
+<p><a href="https://cathykc.github.io/bx-stable-infinite-scroll/">Demo</a></p>
+
+<p>Stable bi-directional infinite scroll component. Load additional data from both ends of a container while maintaining current view. Used for chat, timeline, feed views.</p>
+
+<h2 id="documentation">Documentation</h2>
+<h3 id="installation">Installation</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># yarn
+yarn add react-window-infinite-loader
+
+# npm
+npm install --save react-window-infinite-loader
+</code></pre></div></div>
+
+<h3 id="usage">Usage</h3>
+<p>| Prop | Type | Description |
+| — | — | — |
+| <code class="language-plaintext highlighter-rouge">height</code> | <code class="language-plaintext highlighter-rouge">string</code> | Height of infinite scrolling container (e.g. “300px”, “100vh”). |
+| <code class="language-plaintext highlighter-rouge">loadingComponent</code> | <code class="language-plaintext highlighter-rouge">ReactNode</code> | What to display when fetching more data (e.g. <code class="language-plaintext highlighter-rouge">&lt;div&gt;Loading...&lt;/div&gt;</code>). |
+| <code class="language-plaintext highlighter-rouge">nextDataFn</code> | <code class="language-plaintext highlighter-rouge">() =&gt; void</code> | Function to fetch next rows. |
+| <code class="language-plaintext highlighter-rouge">nextEnd</code> | <code class="language-plaintext highlighter-rouge">boolean</code> | No more next rows to fetch. |
+| <code class="language-plaintext highlighter-rouge">nextLoading</code> | <code class="language-plaintext highlighter-rouge">boolean</code> | Fetching next rows. |
+| <code class="language-plaintext highlighter-rouge">previousDataFn</code> | <code class="language-plaintext highlighter-rouge">() =&gt; void</code> | Function to fetch previous rows. |
+| <code class="language-plaintext highlighter-rouge">previousEnd</code> | <code class="language-plaintext highlighter-rouge">boolean</code> | No more previous rows to fetch. |
+| <code class="language-plaintext highlighter-rouge">previousLoading</code> | <code class="language-plaintext highlighter-rouge">boolean</code> | Fetching previous rows. |
+| <code class="language-plaintext highlighter-rouge">initialReverse</code> | <code class="language-plaintext highlighter-rouge">?boolean</code> | Default <code class="language-plaintext highlighter-rouge">true</code> (loading data from top). Indicate whether data will initially be loaded from top or bottom of container. |</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import BxInfiniteScroll from "bx-stable-infinite-scroll";
+
+export default function SomeComponent() {
+  return (
+    &lt;&gt;
+      ...
+      &lt;BxInfiniteScroll
+          height="300px"
+          loadingComponent={&lt;div style=&gt;Loading 5 more items...&lt;/div&gt;}
+
+          nextDataFn={handleNextDataLoad}
+          nextEnd={false}
+          nextLoading={loadingNext}
+
+          previousDataFn={handlePreviousDataLoad}
+          previousEnd={false}
+          previousLoading={loadingPrevious}
+        &gt;
+          {map(items, (item) =&gt; {
+            return (
+              &lt;div
+                key={item.text}
+                style=
+              &gt;
+                &lt;div 
+                  style=
+                /&gt;
+                {item.text}
+              &lt;/div&gt;
+            )
+          })}
+        &lt;/BxInfiniteScroll&gt;
+    &lt;/&gt;
+  )
+}
+</code></pre></div></div>
+
+
+      </section>
+      <footer>
+        
+        <p>This project is maintained by <a href="https://github.com/cathykc">cathykc</a></p>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+    
+    <script type="text/javascript" src="./bundle.js" charset="utf-8"></script>
+  </body>
+</html>
