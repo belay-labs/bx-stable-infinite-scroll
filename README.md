@@ -30,9 +30,9 @@ yarn add bx-stable-infinite-scroll
 | `initialReverse`   | `?boolean`   | Indicate whether data will initially be loaded from top or bottom of container. Default `true` (loading data from top). |
 | `children`         | `ReactNode`  | Rows to render                                                                                                          |
 
-#### Example
 
 See [demo code](https://github.com/cathykc/bx-stable-infinite-scroll/blob/master/examples/src/App.tsx) for detailed usage example.
+
 
 **🚨 Use unique keys for children**
 
