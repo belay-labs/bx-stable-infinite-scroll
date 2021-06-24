@@ -4,6 +4,8 @@
 
 Stable bi-directional infinite scroll React component. Load additional data from both ends of a container while maintaining current view. Used for chat, timeline, feed views.
 
+![](recording.gif)
+
 ## Documentation
 
 ### Installation
@@ -43,5 +45,3 @@ Make sure the elements you're passing into `<BxInfiniteScroll>` have unique and 
   })}
 </BxInfiniteScroll>
 ```
-
-![](recording.gif)
