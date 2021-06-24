@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>bx-stable-infinite-scroll</title>
+<title>📜 bx-stable-infinite-scroll | bx-stable-infinite-scroll</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="bx-stable-infinite-scroll" />
+<meta property="og:title" content="📜 bx-stable-infinite-scroll" />
 <meta property="og:locale" content="en_US" />
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="bx-stable-infinite-scroll" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="bx-stable-infinite-scroll" />
+<meta property="twitter:title" content="📜 bx-stable-infinite-scroll" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/","name":"bx-stable-infinite-scroll","@type":"WebSite","headline":"bx-stable-infinite-scroll","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/","name":"bx-stable-infinite-scroll","@type":"WebSite","headline":"📜 bx-stable-infinite-scroll","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=a8c247ca84c17e7a1c4eb8886eb1832398c31d81">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f6dbb4316fdf10fdcf33d2a3330118b44be4c697">
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body style="overscroll-behavior: none">
     <div class="wrapper">
       <header>
         <h1>Demo</h1>
@@ -46,7 +46,7 @@
       </header>
       <section>
 
-      <h1 id="bx-stable-infinite-scroll">bx-stable-infinite-scroll</h1>
+      <h1 id="-bx-stable-infinite-scroll">📜 bx-stable-infinite-scroll</h1>
 
 <p><a href="https://cathykc.github.io/bx-stable-infinite-scroll/">Demo</a></p>
 
@@ -54,11 +54,11 @@
 
 <h2 id="documentation">Documentation</h2>
 <h3 id="installation">Installation</h3>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save react-window-infinite-loader
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install --save bx-stable-infinite-scroll
 
 # or
 
-yarn add react-window-infinite-loader
+yarn add bx-stable-infinite-scroll
 </code></pre></div></div>
 
 <h3 id="usage">Usage</h3>
@@ -115,11 +115,11 @@ yarn add react-window-infinite-loader
     <tr>
       <td><code class="language-plaintext highlighter-rouge">initialReverse</code></td>
       <td><code class="language-plaintext highlighter-rouge">?boolean</code></td>
-      <td>Default <code class="language-plaintext highlighter-rouge">true</code> (loading data from top). Indicate whether data will initially be loaded from top or bottom of container.</td>
+      <td>Indicate whether data will initially be loaded from top or bottom of container. Default <code class="language-plaintext highlighter-rouge">true</code> (loading data from top).</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">children</code></td>
-      <td>ReactNode</td>
+      <td><code class="language-plaintext highlighter-rouge">ReactNode</code></td>
       <td>Rows to render</td>
     </tr>
   </tbody>
@@ -128,12 +128,13 @@ yarn add react-window-infinite-loader
 <h4 id="example">Example</h4>
 <p>See <a href="https://github.com/cathykc/bx-stable-infinite-scroll/blob/master/examples/src/App.tsx">demo code</a> for detailed usage example.</p>
 
-<p><strong>🚨 Use unique keys for children</strong>
-Make sure the elements you’re passing into <code class="language-plaintext highlighter-rouge">&lt;BxInfiniteScroll&gt;</code> have unique and consistent keys.</p>
+<p><strong>🚨 Use unique keys for children</strong></p>
+
+<p>Make sure the elements you’re passing into <code class="language-plaintext highlighter-rouge">&lt;BxInfiniteScroll&gt;</code> have unique and consistent keys.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;BxInfiniteScroll {...props}&gt;
   {map(rows, (row) =&gt; {
-    return &lt;div key={row.key}&gt;{row.content}&lt;/div&gt;
+    return &lt;div key={row.id}&gt;{row.content}&lt;/div&gt;
   })}
 &lt;/BxInfiniteScroll&gt;
 </code></pre></div></div>

@@ -1,4 +1,4 @@
-# bx-stable-infinite-scroll
+# 📜 bx-stable-infinite-scroll
 
 [Demo](https://cathykc.github.io/bx-stable-infinite-scroll/)
 
@@ -7,11 +7,11 @@ Stable bi-directional infinite scroll React component. Load additional data from
 ## Documentation
 ### Installation
 ```
-npm install --save react-window-infinite-loader
+npm install --save bx-stable-infinite-scroll
 
 # or
 
-yarn add react-window-infinite-loader
+yarn add bx-stable-infinite-scroll
 ```
 
 ### Usage
@@ -26,19 +26,20 @@ yarn add react-window-infinite-loader
 | `previousDataFn` | `() => void` | Function to fetch previous rows. |
 | `previousEnd` | `boolean` | No more previous rows to fetch. |
 | `previousLoading` | `boolean` | Fetching previous rows. |
-| `initialReverse` | `?boolean` | Default `true` (loading data from top). Indicate whether data will initially be loaded from top or bottom of container. | 
-| `children` | ReactNode | Rows to render |
+| `initialReverse` | `?boolean` | Indicate whether data will initially be loaded from top or bottom of container. Default `true` (loading data from top). | 
+| `children` | `ReactNode` | Rows to render |
 
 #### Example
 See [demo code](https://github.com/cathykc/bx-stable-infinite-scroll/blob/master/examples/src/App.tsx) for detailed usage example.
 
 **🚨 Use unique keys for children**
+
 Make sure the elements you're passing into `<BxInfiniteScroll>` have unique and consistent keys.
 
 ```
 <BxInfiniteScroll {...props}>
   {map(rows, (row) => {
-    return <div key={row.key}>{row.content}</div>
+    return <div key={row.id}>{row.content}</div>
   })}
 </BxInfiniteScroll>
 ```
