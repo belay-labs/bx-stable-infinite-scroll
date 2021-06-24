@@ -11,7 +11,6 @@ import useScroll from "./useScroll";
 
 interface Props {
   children: ReactNode;
-  height: string;
   initialReverse?: boolean;
   loadingComponent: ReactNode;
 
@@ -27,7 +26,6 @@ const BxInfiniteScroll = forwardRef<ReactNode, Props>(
   (
     {
       children,
-      height,
       initialReverse = true,
       loadingComponent,
 
@@ -48,9 +46,8 @@ const BxInfiniteScroll = forwardRef<ReactNode, Props>(
 
     const [reverseCol, setReverseCol] = useState(initialReverse);
     const [reverseColValue, setReverseColValue] = useState<number | null>(null);
-    const [scrolledToBottom, scrolledToTop, containerRef] = useScroll(
-      reverseCol,
-    );
+    const [scrolledToBottom, scrolledToTop, containerRef] =
+      useScroll(reverseCol);
     const container = (containerRef as RefObject<HTMLDivElement>).current;
 
     // This is called next render - next flex-col or flex-col-reverse is set
@@ -99,7 +96,7 @@ const BxInfiniteScroll = forwardRef<ReactNode, Props>(
         style={{
           display: "flex",
           flexDirection: reverseCol ? "column-reverse" : "column",
-          height,
+          height: "100%",
           overflowY: "scroll",
         }}
         ref={containerRef as RefObject<HTMLDivElement>}

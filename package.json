@@ -1,10 +1,11 @@
 {
   "name": "bx-stable-infinite-scroll",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Stable bidirectional infinite scroll React component",
-  "main": "lib/index.js",
+  "main": "lib/index.jsx",
   "scripts": {
-    "prepare": "install-peers",
+    "tsc": "tsc --noEmit",
+    "prepare": "install-peers && husky install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.publish.js",
     "prepublishOnly": "npm run build",
@@ -15,17 +16,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cathykc/npm-publish-boilerplate.git"
+    "url": "git+https://github.com/cathykc/bx-stable-infinite-scroll"
   },
   "keywords": [
-    "react"
+    "react",
+    "scroll",
+    "chat",
+    "timeline",
+    "feed",
+    "infinite",
+    "infinite scroll",
+    "bidirectional",
+    "two-way"
   ],
   "author": "cathykc",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cathykc/npm-publish-boilerplate/issues"
+    "url": "https://github.com/cathykc/bx-stable-infinite-scroll/issues"
   },
-  "homepage": "https://github.com/cathykc/npm-publish-boilerplate#readme",
+  "homepage": "https://cathykc.github.io/bx-stable-infinite-scroll/",
   "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
@@ -41,13 +50,20 @@
     "@babel/preset-typescript": "^7.10.1",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^6.0.2",
     "core-js": "^3.6.5",
     "css-loader": "^3.5.3",
+    "eslint": "^7.29.0",
+    "eslint-plugin-react": "^7.24.0",
     "gh-pages": "^3.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "husky": "^6.0.0",
     "install-peers-cli": "^2.2.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.1",
     "style-loader": "^1.2.1",
     "typescript": "^3.9.5",
     "url-loader": "^4.1.0",
@@ -59,5 +75,9 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "randomcolor": "^0.6.2"
+  },
+  "lint-staged": {
+    "*.{js,css,md,jsx,ts,tsx}": "prettier --write",
+    "*.{js,jsx,ts,tsx}": "eslint --fix --max-warnings 0"
   }
 }
