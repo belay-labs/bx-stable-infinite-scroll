@@ -1,7 +1,7 @@
-const CopyPlugin = await import("copy-webpack-plugin");
-const path = await import("path");
-const merge = await import("webpack-merge");
-const common = await import("./webpack.common.js");
+const CopyPlugin = require("copy-webpack-plugin");
+const path = require("path");
+const merge = require("webpack-merge");
+const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
   entry: ["@babel/polyfill", path.join(__dirname, "src/index.tsx")],
