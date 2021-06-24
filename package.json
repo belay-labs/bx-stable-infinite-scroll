@@ -1,6 +1,6 @@
 {
   "name": "bx-stable-infinite-scroll",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Stable bidirectional infinite scroll React component",
   "main": "lib/index.jsx",
   "scripts": {
