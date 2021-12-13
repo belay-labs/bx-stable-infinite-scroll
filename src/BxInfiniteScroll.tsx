@@ -41,6 +41,7 @@ const BxInfiniteScroll = forwardRef<ReactNode, Props>(
     useImperativeHandle(ref, () => {
       return {
         setReverseCol,
+        containerRef,
       };
     });
 

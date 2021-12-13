@@ -12,7 +12,8 @@
     "start": "npm run build-demo && (cd examples/dist && bundle install && bundle exec jekyll serve)",
     "build-demo": "webpack --config webpack.example.js",
     "deploy-demo": "gh-pages -d examples/dist",
-    "publish-demo": "npm run build-demo && npm run deploy-demo"
+    "publish-demo": "npm run build-demo && npm run deploy-demo",
+    "install-peers": "install-peers"
   },
   "repository": {
     "type": "git",
