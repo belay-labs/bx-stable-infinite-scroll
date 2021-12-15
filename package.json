@@ -49,6 +49,7 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "@babel/preset-typescript": "^7.10.1",
+    "@types/lodash": "^4.14.178",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^4.28.0",
@@ -75,7 +76,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "randomcolor": "^0.6.2"
+    "randomcolor": "^0.6.2",
+    "react-virtual": "^2.10.0"
   },
   "lint-staged": {
     "*.{js,css,md,jsx,ts,tsx}": "prettier --write",
