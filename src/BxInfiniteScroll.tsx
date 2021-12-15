@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   RefObject,
   useEffect,
+  useLayoutEffect,
   useImperativeHandle,
   useState,
 } from "react";
@@ -52,7 +53,7 @@ const BxInfiniteScroll = forwardRef<ReactNode, Props>(
     const container = (containerRef as RefObject<HTMLDivElement>).current;
 
     // This is called next render - next flex-col or flex-col-reverse is set
-    useEffect(() => {
+    useLayoutEffect(() => {
       if (reverseColValue !== null) {
         container?.scrollTo({ top: reverseColValue });
       }

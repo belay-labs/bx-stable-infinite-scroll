@@ -2,13 +2,16 @@ import { concat, map } from "lodash";
 import randomColor from "randomcolor";
 import React, { FunctionComponent, useState } from "react";
 
-import BxInfiniteScroll from "../../src";
+import BxInfiniteScroll, { BxInfiniteScrollVirtualized } from "../../src";
 
 const App: FunctionComponent = () => {
   const [items, setItems] = useState(
-    map([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], (i) => {
-      return { color: "#AAA", text: `Initial item ${i}` };
-    }),
+    map(
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 110],
+      (i) => {
+        return { color: "#AAA", text: `Initial item ${i}` };
+      },
+    ),
   );
   const [loadingNext, setLoadingNext] = useState(false);
   const [loadingPrevious, setLoadingPrevious] = useState(false);
@@ -56,7 +59,7 @@ const App: FunctionComponent = () => {
           height: "300px",
         }}
       >
-        <BxInfiniteScroll
+        <BxInfiniteScrollVirtualized
           loadingComponent={
             <div style={{ padding: "8px 16px" }}>Loading 5 more items...</div>
           }
@@ -66,8 +69,7 @@ const App: FunctionComponent = () => {
           previousDataFn={handlePreviousDataLoad}
           previousEnd={false}
           previousLoading={loadingPrevious}
-        >
-          {map(items, (item) => {
+          renderRow={(item) => {
             return (
               <div
                 key={item.text}
@@ -90,8 +92,9 @@ const App: FunctionComponent = () => {
                 {item.text}
               </div>
             );
-          })}
-        </BxInfiniteScroll>
+          }}
+          rows={items}
+        />
       </div>
     </>
   );
