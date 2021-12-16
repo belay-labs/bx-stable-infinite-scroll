@@ -1,7 +1,9 @@
 import React, {
+  forwardRef,
   ReactNode,
   RefObject,
   useEffect,
+  useImperativeHandle,
   useState,
   useRef,
   useLayoutEffect,
@@ -22,106 +24,116 @@ interface Props {
   rows: Array<any>;
 }
 
-const BxInfiniteScrollVirtualized = ({
-  loadingComponent,
-  nextDataFn,
-  nextEnd,
-  nextLoading,
-  previousDataFn,
-  previousEnd,
-  previousLoading,
-  renderRow,
-  rows,
-}: Props) => {
-  const [scrolledToBottom, scrolledToTop, containerRef] = useScroll();
-  const container = (containerRef as RefObject<HTMLDivElement>).current;
+const BxInfiniteScrollVirtualized = forwardRef<ReactNode, Props>(
+  (
+    {
+      loadingComponent,
+      nextDataFn,
+      nextEnd,
+      nextLoading,
+      previousDataFn,
+      previousEnd,
+      previousLoading,
+      renderRow,
+      rows,
+    }: Props,
+    ref,
+  ) => {
+    const [scrolledToBottom, scrolledToTop, containerRef] = useScroll();
+    const container = (containerRef as RefObject<HTMLDivElement>).current;
+    useImperativeHandle(ref, () => {
+      return {
+        containerRef,
+      };
+    });
 
-  const anchorData = useRef<{ prevHeight: number; rowLength: number }>();
-  const isPrependRef = useRef(false);
-  const prevLoadingRef = useRef<HTMLDivElement>(null);
-  const nextLoadingRef = useRef<HTMLDivElement>(null);
+    const anchorData = useRef<{ prevHeight: number; rowLength: number }>();
+    const isPrependRef = useRef(false);
+    const prevLoadingRef = useRef<HTMLDivElement>(null);
+    const nextLoadingRef = useRef<HTMLDivElement>(null);
 
-  const rowVirtualizer = useVirtual({
-    size: rows.length,
-    parentRef: containerRef as RefObject<HTMLDivElement>,
-  });
+    const rowVirtualizer = useVirtual({
+      size: rows.length,
+      parentRef: containerRef as RefObject<HTMLDivElement>,
+    });
 
-  useEffect(() => {
-    if (!container) return;
+    useEffect(() => {
+      if (!container) return;
 
-    if (scrolledToTop && !previousLoading && !previousEnd) {
-      previousDataFn();
-      isPrependRef.current = true;
-    }
-  }, [scrolledToTop]);
+      if (scrolledToTop && !previousLoading && !previousEnd) {
+        previousDataFn();
+        isPrependRef.current = true;
+      }
+    }, [scrolledToTop]);
 
-  useEffect(() => {
-    if (!container) return;
+    useEffect(() => {
+      if (!container) return;
 
-    if (scrolledToBottom && !nextLoading && !nextEnd) {
-      nextDataFn();
-    }
-  }, [scrolledToBottom]);
+      if (scrolledToBottom && !nextLoading && !nextEnd) {
+        nextDataFn();
+      }
+    }, [scrolledToBottom]);
 
-  useLayoutEffect(() => {
-    if (!container) return;
+    useLayoutEffect(() => {
+      if (!container) return;
 
-    const height = rowVirtualizer.totalSize;
-    if (
-      anchorData.current &&
-      anchorData.current.rowLength !== rows.length &&
-      isPrependRef.current
-    ) {
-      const loadingHeights =
-        (prevLoadingRef.current?.clientHeight || 0) +
-        (nextLoadingRef.current?.clientHeight || 0);
-      container.scrollTop =
-        container.scrollTop +
-        (height - anchorData.current.prevHeight - loadingHeights);
-      isPrependRef.current = false;
-    }
+      const height = rowVirtualizer.totalSize;
+      if (
+        anchorData.current &&
+        anchorData.current.rowLength !== rows.length &&
+        isPrependRef.current
+      ) {
+        const loadingHeights =
+          (prevLoadingRef.current?.clientHeight || 0) +
+          (nextLoadingRef.current?.clientHeight || 0);
+        container.scrollTop =
+          container.scrollTop +
+          (height - anchorData.current.prevHeight - loadingHeights);
+        isPrependRef.current = false;
+      }
 
-    anchorData.current = { prevHeight: height, rowLength: rows.length };
-  }, [rowVirtualizer.totalSize]);
+      anchorData.current = { prevHeight: height, rowLength: rows.length };
+    }, [rowVirtualizer.totalSize]);
 
-  return (
-    <div
-      ref={containerRef as RefObject<HTMLDivElement>}
-      style={{
-        height: "100%",
-        overflowY: "scroll",
-      }}
-    >
-      {previousLoading && <div ref={prevLoadingRef}>{loadingComponent}</div>}
+    return (
       <div
+        ref={containerRef as RefObject<HTMLDivElement>}
         style={{
-          height: `${rowVirtualizer.totalSize}px`,
-          width: "100%",
-          position: "relative",
+          height: "100%",
+          overflowY: "scroll",
         }}
       >
-        {rowVirtualizer.virtualItems.map((virtualRow) => (
-          <div
-            key={rows[virtualRow.index].id || virtualRow.index}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: `${virtualRow.size}px`,
-              transform: `translateY(${virtualRow.start}px)`,
-            }}
-          >
-            <div ref={virtualRow.measureRef}>
-              {renderRow(rows[virtualRow.index])}
+        {previousLoading && <div ref={prevLoadingRef}>{loadingComponent}</div>}
+        <div
+          style={{
+            height: `${rowVirtualizer.totalSize}px`,
+            width: "100%",
+            position: "relative",
+          }}
+        >
+          {rowVirtualizer.virtualItems.map((virtualRow) => (
+            <div
+              key={rows[virtualRow.index].id || virtualRow.index}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: `${virtualRow.size}px`,
+                transform: `translateY(${virtualRow.start}px)`,
+              }}
+            >
+              <div ref={virtualRow.measureRef}>
+                {renderRow(rows[virtualRow.index])}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        {nextLoading && <div ref={nextLoadingRef}>{loadingComponent}</div>}
       </div>
-      {nextLoading && <div ref={nextLoadingRef}>{loadingComponent}</div>}
-    </div>
-  );
-};
+    );
+  },
+);
 
 BxInfiniteScrollVirtualized.displayName = "BxInfiniteScrollVirtualized";
 
