@@ -4,6 +4,8 @@
 
 Stable bi-directional infinite scroll React component. Load additional data from both ends of a container while maintaining current view. Used for chat, timeline, feed views.
 
+![](recording.gif)
+
 ## Documentation
 
 ### Installation
@@ -30,9 +32,7 @@ yarn add bx-stable-infinite-scroll
 | `initialReverse`   | `?boolean`   | Indicate whether data will initially be loaded from top or bottom of container. Default `true` (loading data from top). |
 | `children`         | `ReactNode`  | Rows to render                                                                                                          |
 
-
 See [demo code](https://github.com/cathykc/bx-stable-infinite-scroll/blob/master/examples/src/App.tsx) for detailed usage example.
-
 
 **🚨 Use unique keys for children**
 
@@ -45,5 +45,3 @@ Make sure the elements you're passing into `<BxInfiniteScroll>` have unique and 
   })}
 </BxInfiniteScroll>
 ```
-
-![](recording.gif)
