@@ -22,6 +22,7 @@ interface Props {
   previousLoading: boolean;
   renderRow: (row: any) => ReactNode;
   rows: Array<any>;
+  virtualOptions?: any;
 }
 
 const BxInfiniteScrollVirtualized = forwardRef<ReactNode, Props>(
@@ -36,14 +37,23 @@ const BxInfiniteScrollVirtualized = forwardRef<ReactNode, Props>(
       previousLoading,
       renderRow,
       rows,
+      virtualOptions = {},
     }: Props,
     ref,
   ) => {
     const [scrolledToBottom, scrolledToTop, containerRef] = useScroll();
     const container = (containerRef as RefObject<HTMLDivElement>).current;
+
+    const { virtualItems, totalSize, scrollToIndex } = useVirtual({
+      ...virtualOptions,
+      size: rows.length,
+      parentRef: containerRef as RefObject<HTMLDivElement>,
+    });
+
     useImperativeHandle(ref, () => {
       return {
         containerRef,
+        scrollToIndex,
       };
     });
 
@@ -51,11 +61,6 @@ const BxInfiniteScrollVirtualized = forwardRef<ReactNode, Props>(
     const isPrependRef = useRef(false);
     const prevLoadingRef = useRef<HTMLDivElement>(null);
     const nextLoadingRef = useRef<HTMLDivElement>(null);
-
-    const rowVirtualizer = useVirtual({
-      size: rows.length,
-      parentRef: containerRef as RefObject<HTMLDivElement>,
-    });
 
     useEffect(() => {
       if (!container) return;
@@ -77,7 +82,7 @@ const BxInfiniteScrollVirtualized = forwardRef<ReactNode, Props>(
     useLayoutEffect(() => {
       if (!container) return;
 
-      const height = rowVirtualizer.totalSize;
+      const height = totalSize;
       if (
         anchorData.current &&
         anchorData.current.rowLength !== rows.length &&
@@ -93,7 +98,7 @@ const BxInfiniteScrollVirtualized = forwardRef<ReactNode, Props>(
       }
 
       anchorData.current = { prevHeight: height, rowLength: rows.length };
-    }, [rowVirtualizer.totalSize]);
+    }, [totalSize]);
 
     return (
       <div
@@ -106,12 +111,12 @@ const BxInfiniteScrollVirtualized = forwardRef<ReactNode, Props>(
         {previousLoading && <div ref={prevLoadingRef}>{loadingComponent}</div>}
         <div
           style={{
-            height: `${rowVirtualizer.totalSize}px`,
+            height: `${totalSize}px`,
             width: "100%",
             position: "relative",
           }}
         >
-          {rowVirtualizer.virtualItems.map((virtualRow) => (
+          {virtualItems.map((virtualRow) => (
             <div
               key={rows[virtualRow.index].id || virtualRow.index}
               style={{
